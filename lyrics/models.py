@@ -4,15 +4,16 @@ from django.db import models
 class Artist(models.Model):
     firstname = models.CharField(max_length=30)
     lastname  = models.CharField(max_length=30)
+    instrument = models.CharField(max_length=30)
     date_of_birth = models.DateTimeField(null=True, blank=True)
     
     def __str__(self):
-        return self.firstname
+        return self.firstname + ' ' +self.lastname
     
 class Genre(models.Model):
     name = models.CharField(max_length=60)
     about = models.TextField()
-    
+    created_at = models.DateField(auto_now_add=True)
     def __str__(self):
         return self.name
     
@@ -28,19 +29,21 @@ class Band(models.Model):
 class Album(models.Model):
     title = models.CharField(max_length=100)
     band  = models.ForeignKey('Band')
-    released_date = models.DateTimeField(null=True, blank=True)
-    genre = models.ManyToManyField('Genre')
+    release_date = models.DateTimeField(null=True, blank=True)
+    genres = models.ManyToManyField('Genre')
+    num_sold = models.BigIntegerField(null=True, blank=True)
     
     def __str__(self):
         return self.title
 
 class Song(models.Model):
-    song_title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
     lyrics = models.TextField()
     album = models.ForeignKey('Album')
+    band = models.ForeignKey('Band', null=True, blank=True)
     
     def __str__(self):
-        return self.song_title
+        return self.title
     
 
     
