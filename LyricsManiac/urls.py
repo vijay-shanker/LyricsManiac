@@ -6,6 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
+    url(r'^lyrics/',include('lyrics.urls')),
     # url(r'^$', 'LyricsManiac.views.home', name='home'),
     # url(r'^LyricsManiac/', include('LyricsManiac.foo.urls')),
 

@@ -1,0 +1,3 @@
+{% for band in bandlist %}
+<a href="{% url 'album-list' band.id %}">{{ band }}</a> <b>Copies Sold:</b>{{ band.copies_sold }}<br/>
+{% endfor %}

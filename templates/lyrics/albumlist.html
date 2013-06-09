@@ -1,0 +1,6 @@
+{% for album in albumlist %}
+    <p><b>{{album}}</b></p>
+    {% for each in album.all_songs%}
+        <p>{{each}}</p>
+    {% endfor %}
+{% endfor %}

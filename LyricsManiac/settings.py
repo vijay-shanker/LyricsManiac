@@ -1,4 +1,9 @@
 # Django settings for LyricsManiac project.
+import os
+from unipath import Path
+
+PROJECT_DIR = Path(__file__).ancestor(2)
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -108,6 +113,8 @@ ROOT_URLCONF = 'LyricsManiac.urls'
 WSGI_APPLICATION = 'LyricsManiac.wsgi.application'
 
 TEMPLATE_DIRS = (
+    PROJECT_DIR.child("templates"),
+    #os.path.join(PROJECT_ROOT,'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
