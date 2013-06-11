@@ -1,2 +1,13 @@
+{% extends "base.html" %}
+
+{% block header %}
+{{ block.super }}
+<link href="{{MEDIA_URL}}css/bootstrap.min.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+
 <p>{{ lyrics.title}}</p>
 <p>{{lyrics.lyrics|safe}}</p>
+
+{% endblock%}

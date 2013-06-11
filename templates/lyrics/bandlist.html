@@ -1,3 +1,14 @@
+{% extends "base.html" %}
+
+{% block header %}
+{{ block.super }}
+<link href="{{MEDIA_URL}}css/bootstrap.min.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    
 {% for band in bandlist %}
-<a href="{% url 'album-list' band.id %}">{{ band }}</a> <b>Copies Sold:</b>{{ band.copies_sold }}<br/>
+<a href="{% url 'album-list' band.id %}">{{ band }}</a><br/>
 {% endfor %}
+
+{% endblock %}

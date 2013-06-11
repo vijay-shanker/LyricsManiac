@@ -1,6 +1,17 @@
+{% extends "base.html" %}
+
+{% block header %}
+{{ block.super }}
+<link href="{{MEDIA_URL}}css/bootstrap.min.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+
 {% for album in albumlist %}
     <p><b>{{album}}</b></p>
     {% for each in album.all_songs%}
         <a href="{% url 'lyrics-view' each.id %}">{{each}}</a><br/>
     {% endfor %}
 {% endfor %}
+
+{% endblock %}
