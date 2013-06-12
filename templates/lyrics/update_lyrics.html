@@ -11,10 +11,11 @@
 {% block content %}
 {{ block.super}}
 
-<div class="span3">
-{% for band in bandlist %}
-<a class="btn btn-info" href="{% url 'album-list' band.id %}">{{ band }}</a><br/><br/>
-{% endfor %}    
+<div class="span6 offset6">
+    <form method="post">{%csrf_token%}
+        {{ form.as_p }}
+    <input type="submit" class="btn btn-info" value="submit" />
+    </form>
 </div>
 
 

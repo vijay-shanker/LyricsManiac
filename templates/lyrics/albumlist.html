@@ -2,11 +2,11 @@
 
 {% block header %}
 {{ block.super }}
-<link href="{{MEDIA_URL}}css/bootstrap.min.css" rel="stylesheet" media="screen">
 {% endblock %}
 
 {% block content %}
-
+{{ block.super}}    
+    <div class="span8 offset6">
 {% for album in albumlist %}
     <p><b>{{album}}</b></p>
     {% for each in album.all_songs%}
@@ -15,3 +15,5 @@
 {% endfor %}
 
 {% endblock %}
+    </div>
+</div>

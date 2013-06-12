@@ -1,7 +1,16 @@
 # Create your views here.
-from django.views.generic import ListView, DetailView
-from django.shortcuts import get_list_or_404, get_object_or_404
+#from utils.urlconf import reverse_lazy
+from django.views.generic import ListView, DetailView, UpdateView
+from django.shortcuts import get_list_or_404, get_object_or_404, redirect
 from lyrics.models import Band, Album, Song
+from django import forms
+from django.core.urlresolvers import reverse
+
+class UpdateLyricsForm(forms.ModelForm):
+    class Meta:
+        model= Song
+        
+    
 
 class BandList(ListView):
     model = Band
@@ -27,6 +36,19 @@ class LyricsView(DetailView):
     
     def get_object_name(self):
         return get_object_or_404(Song, id = self.kwargs['pk'])
+    
+class EditLyrics(UpdateView):
+    template_name = 'lyrics/update_lyrics.html'
+    form_class = UpdateLyricsForm
+    
+    def get_object(self):
+        return Song.objects.get(pk=self.kwargs['pk'])
+    
+    def get_success_url(self):
+        return reverse('lyrics-view', args=(self.kwargs.get('pk'),))
+    
+    
+
         
     
 
