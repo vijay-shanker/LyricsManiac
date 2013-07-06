@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block header %}
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div class="span3 offset2">
+    {{message}}<br/>
+    <a href="{% url 'login-view' %}">Login</a>
+</div>
+
+{% endblock %}
+    </div>
+</div>
