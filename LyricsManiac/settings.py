@@ -26,6 +26,9 @@ DATABASES = {
     }
 }
 
+#replacing contrib.User
+AUTH_USER_MODEL = 'account.User'
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -132,6 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'lyrics',
+    'account'
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

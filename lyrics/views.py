@@ -11,7 +11,6 @@ class UpdateLyricsForm(forms.ModelForm):
         model= Song
         
     
-
 class BandList(ListView):
     model = Band
     template_name =  'lyrics/bandlist.html'
@@ -20,6 +19,7 @@ class BandList(ListView):
     def get_context_data(self, **kwargs):
         context = super(BandList,self).get_context_data(**kwargs)
         return context
+
     
 class AlbumList(DetailView):
     model = Album
@@ -29,6 +29,7 @@ class AlbumList(DetailView):
     def get_object(self, queryset=None):
         return get_list_or_404(Album, band__id = self.kwargs['band_id'])
 
+
 class LyricsView(DetailView):
     model = Song
     template_name = 'lyrics/lyrics.html'
@@ -36,6 +37,7 @@ class LyricsView(DetailView):
     
     def get_object_name(self):
         return get_object_or_404(Song, id = self.kwargs['pk'])
+
     
 class EditLyrics(UpdateView):
     template_name = 'lyrics/update_lyrics.html'

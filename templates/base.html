@@ -10,11 +10,21 @@
 {% endblock %}
 </head>
 <body>
-{% block content %}
+{% block head %}
 <div class="row">
     <div class="span6 offset6"><h3>Welcome to LyricsManiac.com</h3></div>
+    <div class="span2 offset1 pull-right">{{ request.user }}
+        {% if user.is_authenticated %}
+        hello {{ user.first_name }} <a class="btn btn-mini" href={% url 'logout-view' %}>Logout</a>
+        {% else %}
+        <a class="btn btn-small" href="{% url 'login-view' %}">Login</a>
+        <a class="btn btn-small" href="{% url 'register-view' %}">Signup</a>
+        {% endif %}
+    </div>
 </div>
 {% endblock%}
+{% block content %}
+{% endblock %}
 </body>
 
 {% block footer %}

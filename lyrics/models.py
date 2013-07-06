@@ -19,7 +19,7 @@ class Genre(models.Model):
     
 class Band(models.Model):
     band = models.CharField(max_length=60)
-    genre = models.ManyToManyField('Genre')
+    genre = models.ManyToManyField('Genre',related_name='bands')
     artists = models.ManyToManyField('Artist')
     description = models.TextField(null=True, blank=True)
     
@@ -35,9 +35,9 @@ class Band(models.Model):
     
 class Album(models.Model):
     title = models.CharField(max_length=100)
-    band  = models.ForeignKey('Band')
+    band  = models.ForeignKey('Band', related_name= 'albums')
     release_date = models.DateTimeField(null=True, blank=True)
-    genres = models.ManyToManyField('Genre')
+    genres = models.ManyToManyField('Genre', related_name='albums')
     num_sold = models.BigIntegerField(null=True, blank=True)
     price = models.IntegerField(default=0)
     
@@ -53,7 +53,7 @@ class Album(models.Model):
 class Song(models.Model):
     title = models.CharField(max_length=100)
     lyrics = models.TextField()
-    album = models.ForeignKey('Album')
+    album = models.ForeignKey('Album', related_name='songs')
     band = models.ForeignKey('Band', null=True, blank=True)
     
     def __str__(self):
