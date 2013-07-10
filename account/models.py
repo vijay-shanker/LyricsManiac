@@ -24,8 +24,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     def __unicode__(self):
         return self.get_full_name()
-    
-    
+        
     def get_full_name(self):
         return ' '.join([self.first_name, self.last_name]) or self.username
     
