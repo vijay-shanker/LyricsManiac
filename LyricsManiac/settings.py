@@ -1,9 +1,9 @@
 # Django settings for LyricsManiac project.
 import os
-from unipath import Path
+
 
 #PROJECT_DIR = Path(__file__).ancestor(2)
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath('__file__'))))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -25,6 +25,8 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
+#login url
+#LOGIN_URL = '/'
 
 #replacing contrib.User
 AUTH_USER_MODEL = 'account.User'
@@ -75,6 +77,7 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT,'assets','collected_static')
 
+
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 
@@ -121,7 +124,7 @@ ROOT_URLCONF = 'LyricsManiac.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'LyricsManiac.wsgi.application'
 
-print '-->',PROJECT_ROOT
+
 TEMPLATE_DIRS = (
     
     os.path.join(PROJECT_ROOT,'templates'),
