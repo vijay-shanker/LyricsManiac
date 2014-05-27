@@ -141,14 +141,42 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'chronograph',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'south',
+    'social_auth',
     'lyrics',
-    'account'
+    'account',
+    
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    )   
+
+LOGIN_URL          = '/'
+LOGIN_REDIRECT_URL = '/lyrics/bandlist/'
+LOGIN_ERROR_URL    = '/'
+
+FACEBOOK_APP_ID = '382101465248978'
+FACEBOOK_API_SECERT = '532d087cce947e33107626ae5f4ebd3e'
+FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'social_auth.context_processors.social_auth_by_name_backends',
+    'social_auth.context_processors.social_auth_backends',
+    'social_auth.context_processors.social_auth_by_type_backends',
+    'social_auth.context_processors.social_auth_login_redirect',
+   )
+
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

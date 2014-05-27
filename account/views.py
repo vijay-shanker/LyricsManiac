@@ -3,7 +3,7 @@ from django import forms
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.views.generic.base import View
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, FormView
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
@@ -11,8 +11,7 @@ from django.http import HttpResponseRedirect
 from account.forms import LoginForm, SignupForm
 from account.models import User
 
-   
-        
+
 class RegisterView(CreateView):
     template_name = 'register.html'
     model = User
@@ -25,9 +24,7 @@ class RegisterView(CreateView):
     def get_success_url(self, ):
         return reverse ('bands-list')
     
-    
 
-    
 class LoginView(View):
     def get(self, request, *args, **kwargs):
         form = LoginForm()
@@ -50,11 +47,15 @@ class LoginView(View):
         else:
             form = LoginForm()
             return render_to_response('login.html', {'form':form},context_instance = RequestContext(request) )
+
         
 def logout_view(request, next_page):
     logout(request)
     return HttpResponseRedirect(next_page)
     
 
+class ResetPassword(FormView):
+    template_name = 'reset_password.html'
+    
 
     

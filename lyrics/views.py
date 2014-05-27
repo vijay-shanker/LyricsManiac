@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 class UpdateLyricsForm(forms.ModelForm):
     class Meta:
         model= Song
+        exclude = ['jargon',]
         
     
 class BandList(ListView):

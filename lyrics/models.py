@@ -49,12 +49,28 @@ class Album(models.Model):
         all_songs = Song.objects.filter(album=self)
         return all_songs
     
+class Jargon(models.Model):
+    song_title = models.CharField(max_length=255)
+    jargon_info = models.TextField(null=True, blank = True)
+    
+    def __unicode__(self):
+        return self.jargon_info[:30]
+    
+class JargonThrough(models.Model):
+    song = models.ForeignKey('Song')
+    jargon = models.ForeignKey('Jargon')
+    extra_info = models.CharField(max_length=250)
+    
+    def __unicode__(self):
+        return self.song.title
+    
 
 class Song(models.Model):
     title = models.CharField(max_length=100)
     lyrics = models.TextField()
     album = models.ForeignKey('Album', related_name='songs')
     band = models.ForeignKey('Band', null=True, blank=True)
+    jargon = models.ManyToManyField('Jargon', through= 'JargonThrough', null = True, blank = True)
     
     def __str__(self):
         return self.title

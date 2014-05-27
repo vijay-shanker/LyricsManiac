@@ -13,10 +13,12 @@
     {{ form }}
     </p>
     <input type="submit" name="submit" value="submit"/>
+    <a href="{% url 'reset_password' %}" >forgot password?</a>
     </form>
     </span>
-</div>
-
+</div><!-- 
+        <a href="{% url 'socialauth_begin' 'facebook' %}" class="btn btn-primary">Login with Facebook</a> -->
+<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 {% endblock %}
     </div>
 </div>

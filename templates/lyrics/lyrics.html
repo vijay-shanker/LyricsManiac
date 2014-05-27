@@ -6,13 +6,18 @@
 
 {% block content %}
 {{ block.super}}
-<div class="row">
+<div class="row" style="margin:0px 0px 0px 100px;">
     <div class="span8 offset3">
         <p><b>{{ lyrics.title}}</b></p>
         <p>{{lyrics.lyrics|safe}}</p>
+        <br/>
+        <br/>
+        <p>Song Info</p>
+        <p> {{ lyrics.jargon.jargoninfo }} </p>
     </div>
     <div class="span4">
-        <a href="{%url 'update-lyrics' lyrics.id  %}" class="btn btn-info">Edit</a>        
+        <a href="{% url 'update-lyrics' lyrics.id  %}" class="btn btn-info">Edit</a>
+        <a href= "#" class="btn btn-info">Add Song Info</a>
     </div>
     
 </div>
